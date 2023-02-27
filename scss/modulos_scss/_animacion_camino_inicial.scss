@@ -1,0 +1,135 @@
+/* **************************************** 
+    se exhibe el camino de cada eneatipo 
+        para ser leido 
+*******************************************  */
+#explicacion_inicial_1
+{
+    margin-top:0px;
+    margin-bottom:0px;
+    margin-left: 340px;
+    margin-right: 0px;
+    position:absolute;    
+}
+#explicacion_inicial_2
+{
+    position:absolute;
+    width:0px;
+    height:fit-content;
+}
+.subtitulo_explicacion_inicial
+{
+    text-align: center;
+    margin: opx;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: bold;
+}
+@for $i from 1 through 10 
+{ 
+    .explicacion_del_camino_inicial:nth-of-type(#{$i})
+    { 
+        border:1px solid black;
+        border-radius:5px;
+        background-color: $color-fondo-de-explicacion; 
+        padding-left:1px;
+        padding-right:0px;
+        padding-bottom:2px;
+        margin:8px;
+        height: 0%;
+        max-height: 250px;
+        visibility:hidden;
+        @if $i<= 9 {transform:translatex((-60px+(11-$i)*6px));} @else {transform:traslatex(0px);}
+        @if $i<= 9 {animation-name: entra_explicacion_inicial;} @else {animation-name: mensaje_final}
+        animation-fill-mode: forwards;
+        @if $i<= 9 {animation-delay: $mandala-duration + ( $duracion - $duracion * (( 10 - $i ) / 9 ) )} @else {animation-delay: $mandala-duration + $duracion};
+        animation-duration: ( $duracion / 9);
+        animation-iteration-count: 1;
+        animation-timing-function:linear;
+        display:inline-block;
+        font-style: italic;
+    }
+}
+@keyframes entra_explicacion_inicial
+{
+    0% {visibility: hidden;width:0px; height:100%;background-color: $color-fondo-de-explicacion;font-weight: bold;}
+    10% {visibility: visible;width:230px; height:100%;background-color: $color-fondo-de-explicacion;font-weight: bold;}
+    80% {visibility:visible;width:230px;height:100%;background-color:transparent;font-weight: bold;}
+    85% {visibility:visible;width:230px;height:80%;background-color:transparent;font-weight:100;}
+    95% {visibility:hidden;width:230px;height:60%;background-color:transparent;font-weight:100;}
+    100% {visibility: hidden;width:0px;height:0px;background-color:transparent;font-weight: 100;}
+}
+@keyframes mensaje_final
+{
+    0% {visibility:hidden ;width:230px; height:100%;background-color: $color-fondo-de-explicacion;font-weight: bold;}
+    1% {visibility:visible ;width:230px; height:100%;background-color: $color-fondo-de-explicacion;font-weight: bold; }
+    100% {visibility:visible ;width:230px; height:100%;background-color: $color-fondo-de-explicacion;font-weight: bold; }
+}
+/* **************************************************
+   se almacena la explicacion del camino en un cuadro 
+                     difuminado abajo
+   **************************************************  */
+#explicacion
+{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top:30px;
+    margin-left: 20px;
+    height:fit-content;
+    position:relative;
+    transform:translate(300px -50px);
+}
+.subtitulo_explicacion
+{
+    text-align: center;
+    margin: opx;
+    font-size: 14px;
+    font-style: italic;
+}
+@for $i from 1 through 9 
+{ 
+    .explicacion_del_camino:nth-of-type(#{$i})
+    { 
+        color:black;
+        animation-name: entra_explicacion;
+        animation-fill-mode: forwards;
+        animation-delay: $mandala-duration + ( $duracion - $duracion * (( 10 - $i ) / 9 ) );
+        animation-duration: $duracion/9;
+        animation-iteration-count: 1;
+        animation-timing-function:linear; 
+        visibility: hidden;
+        min-width: 100px;
+        width: 25%;
+        border:1px solid black;
+        margin: 1px;
+        padding: 3px;
+        border-radius: 5px;
+        height: fit-content;
+    }
+}
+@keyframes entra_explicacion 
+{
+    0% {visibility: hidden; color:$color-difuminado; font-size:10px;transform: translate(25% -15%);}
+    50% {visibility: hidden; color:$color-difuminado; font-size:10px;transform: translate(25% -15%);}
+    96% {visibility: hidden; color:$color-difuminado; font-size:10px;transform: translate(25% -15%);}
+    100% {visibility: visible; color:$color-difuminado; font-size:10px;transform: translate(25% -15%);}
+} 
+/* **************************************************
+   * Formato del boton de salto de la animacion     * 
+   **************************************************  */
+   #saltar_animacion
+   {
+       text-align: center;
+       border: 1px solid black;
+       border-radius: 50%;
+       background-color: aqua;
+       color:blue;
+       font-weight: bold;
+       line-height: 1;
+       margin:0px;
+       padding:5px;
+       width:68px;
+       height:68px;
+       position:absolute;
+       transform:translate(380%, -3px);
+   }

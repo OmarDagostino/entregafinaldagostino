@@ -1,0 +1,56 @@
+@mixin fonts($weight, $style)
+{
+  font-weight:$weight;
+  font-style:$style;  
+}
+h1
+{
+  font-family: $font-titulos;
+}
+h2
+{
+  font-family: $font-titulos;
+}
+h3
+{
+  font-family:$font-subtitulos;
+  @include fonts(bolder !important,italic !important);
+}
+h4
+{
+  font-family: $font-titulos;
+}
+h5
+{
+  font-family:$font-subtitulos ;
+  @include fonts(bolder !important,italic !important);
+}
+h6
+{
+  font-family:$font-parrafos;
+  @include fonts(bold !important,normal !important);
+}
+a
+{
+    text-decoration:none; 
+}
+.font-merri
+{
+  font-family:$font-parrafos !important;
+}
+.texto-chico
+{
+  font-size:68% !important;
+  @include fonts(bolder !important,normal !important);
+}
+.texto-mediano
+{
+  font-size:90% !important;
+  @include fonts(bold !important,normal !important) ;
+}
+.texto-boton
+{
+  font-size:75% !important;
+  @include fonts(bolder !important,normal !important);
+  font-family: 'Gloock', serif;
+}
